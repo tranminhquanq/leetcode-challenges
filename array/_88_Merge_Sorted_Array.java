@@ -3,29 +3,24 @@ import java.util.Arrays;
 public class _88_Merge_Sorted_Array {
 
   public static void merge(int[] n1, int m, int[] n2, int n) {
-    for (int n_i : n2) {
-      insertElement(n_i, n1, m);
-      m++;
-    }
-  }
-
-  public static void insertElement(int val, int[] arr, int m) {
-    boolean isChanged = false;
-
-    for (int k = 0; k < m; k++) {
-      if (arr[k] > val) {
-        isChanged = true;
-
-        for (int i = m - 1; i >= k; i--) {
-          arr[i + 1] = arr[i];
-        }
-        arr[k] = val;
-        break;
+    int i = m - 1;
+    int j = n - 1;
+    int k = m + n - 1;
+    while (k >= 0) {
+      if (j < 0) {
+        n1[k] = n1[i];
+        i--;
+      } else if (i < 0) {
+        n1[k] = n2[j];
+        j--;
+      } else if (n1[i] > n2[j]) {
+        n1[k] = n1[i];
+        i--;
+      } else {
+        n1[k] = n2[j];
+        j--;
       }
-    }
-
-    if (!isChanged) {
-      arr[m] = val;
+      k--;
     }
   }
 

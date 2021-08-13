@@ -1,6 +1,6 @@
-public class findNumbers {
+public class _1295_Find_Numbers_with_Even_Number_of_Digits {
 
-    public static int findNumbersSolution(int[] nums) {
+    public static int findNumbers(int[] nums) {
         int count = 0;
         for (int num : nums) {
             if (countNumber(num) % 2 == 0)
@@ -22,7 +22,7 @@ public class findNumbers {
         int[] input_1 = { 12, 345, 2, 6, 7896 }; // 2
         int[] input_2 = { 555, 901, 482, 1771 }; // 1
 
-        System.out.println("case 1: " + findNumbersSolution(input_1));
-        System.out.println("case 2: " + findNumbersSolution(input_2));
+        System.out.println("case 1: " + findNumbers(input_1));
+        System.out.println("case 2: " + findNumbers(input_2));
     }
 }

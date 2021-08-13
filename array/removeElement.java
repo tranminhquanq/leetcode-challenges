@@ -1,18 +1,15 @@
 public class removeElement {
 
   public static int removeElementSolution(int[] a, int val) {
-    int n = a.length;
+    int n = 0;
 
-    for (int i = 0; i < n; i++) {
-      if (a[i] == val) {
-        for (int j = i; j < n - 1; j++) {
-          a[j] = a[j + 1];
-        }
-        n--;
-        i--;
+    for (int i = 0; i < a.length; i++) {
+      if (a[i] != val) {
+        a[n] = a[i];
+        n++;
       }
     }
-    return n;
+    return n - 1;
   }
 
   public static void main(String[] args) {

@@ -20,9 +20,27 @@ public class SortingAlgorithms {
     }
   }
 
+  public static void selectionSort(int[] array) {
+    int n = array.length;
+    for (int i = 0; i < n; i++) {
+      int min = i;
+      for (int j = i + 1; j < n; j++) {
+        if (array[j] < array[min]) {
+          min = j;
+        }
+      }
+      if (min != i) {
+        int temp = array[i];
+        array[i] = array[min];
+        array[min] = temp;
+      }
+    }
+  }
+
   public static void main(String[] args) {
     int[] input = { 5, 4, 3, 2, 1 };
-    bubbleSort(input);
+    // bubbleSort(input);
+    selectionSort(input);
     System.out.println(Arrays.toString(input));
   }
 

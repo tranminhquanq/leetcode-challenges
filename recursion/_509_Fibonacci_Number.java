@@ -1,6 +1,14 @@
 public class _509_Fibonacci_Number {
 
   public static int fibonnaci(int n) {
+
+    // use recursion to solve the problem
+
+    // if (n <= 1)
+    // return n;
+    // return fibonnaci(n - 1) + fibonnaci(n - 2);
+
+    // refactor code to use loop instead of recursion
     if (n == 0 || n == 1)
       return n;
 

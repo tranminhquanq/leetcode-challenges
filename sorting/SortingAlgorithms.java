@@ -104,59 +104,51 @@ public class SortingAlgorithms {
    // return the merged array
     return result;
   }
-  
   // end Merge sort
 
-  // refactive mergeSort
-  public static int[] sortArray2(int[] arr) {
-    int n = arr.length;
-    int max = Integer.MIN_VALUE;
-    int min = Integer.MAX_VALUE;
-
-    for (int i : arr) {
-      max = Math.max(max, i);
-      min = Math.min(min, i);
-    }
-
-    int range = max - min + 1;
-    int countArray[] = new int[range];
-    int output[] = new int[n];
-
-    // find the count of every element from the original array
-    /*
-     * Note: Here I am subtracting with min, in order to deal with all -ve values
-     */
-    for (int i : arr)
-      countArray[i - min]++;
-
-    // modify the countArray by adding current index value with its previous index
-    // values
-    for (int i = 1; i < range; i++)
-      countArray[i] += countArray[i - 1];
-
-    // filling values in output array using original array by traversing it from the
-    // end
-    for (int i = n - 1; i >= 0; i--) {
-      // int val = countArray[arr[i]-min]-1;
-      output[countArray[arr[i] - min] - 1] = arr[i];
-      countArray[arr[i] - min]--;
-    }
-
-    // copying output array to arr
-    for (int i = 0; i < n; i++)
-      arr[i] = output[i];
-
-    return arr;
+  // quicksort 
+  public static void quicksort(int[] array, int L, int R) {
+    if(L >= R) return;
+    // choose a key
+    int key = array[(L + R) / 2];
+    // partition the array
+    int pivot = partition(array, L, R, key);
+    // recursively sort the left and right halves
+    quicksort(array, L, pivot - 1);
+    // recursively sort the right and left halves
+    quicksort(array, pivot, R);
   }
 
-  // end refactive mergeSort
+  // return the pivot
+  public static int partition(int[] array, int L, int R, int key) {
+    int iL = L, iR = R;
+    while (iL <= iR) {
+      // find the first element that is greater than the key
+      while (array[iL] < key)
+        iL++;
+      // find the first element that is smaller than the key
+      while (array[iR] > key)
+        iR--;
+      // swap the elements if they are out of order
+      if (iL <= iR) {
+        int temp = array[iL];
+        array[iL] = array[iR];
+        array[iR] = temp;
+        iL++;
+        iR--;
+      }
+    }
+    return iL;
+  }
   public static void main(String[] args) {
     int[] input = { 5, 4, 3, 2, 1 };
     // bubbleSort(input);
     // selectionSort(input);
     // insertionSort(input);
     // System.out.println(Arrays.toString(input));
-    System.out.println(Arrays.toString(sortArray2(input)));
+    // System.out.println(Arrays.toString(sortArray(input)));
+    quicksort(input, 0, input.length - 1);
+    System.out.println(Arrays.toString(input));
 
   }
 

@@ -68,6 +68,7 @@ public class SortingAlgorithms {
     int[] a1 = mergeSort(a, L, key);
     // Sort the right and left halves
     int[] a2 = mergeSort(a, key + 1, R);
+    // Merge the two sorted arrays
     int[] result = merge(a1, a2);
     return result;
   }
